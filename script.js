@@ -60,10 +60,17 @@ function displayEmployees() {
                 <td>${employee.salary}</td>
 
                 <td>
+
+                    <button class="update-btn"
+                            onclick="updateEmployee(${index})">
+                        Update
+                    </button>
+
                     <button class="delete-btn"
                             onclick="deleteEmployee(${index})">
                         Delete
                     </button>
+
                 </td>
 
             </tr>
@@ -74,12 +81,71 @@ function displayEmployees() {
 }
 
 
+// Update Employee
+function updateEmployee(index) {
+
+    let employee = employees[index];
+
+    let name = prompt(
+        "Enter Employee Name:",
+        employee.name
+    );
+
+    let email = prompt(
+        "Enter Email:",
+        employee.email
+    );
+
+    let department = prompt(
+        "Enter Department:",
+        employee.department
+    );
+
+    let designation = prompt(
+        "Enter Designation:",
+        employee.designation
+    );
+
+    let salary = prompt(
+        "Enter Salary:",
+        employee.salary
+    );
+
+
+    if (name != null &&
+        email != null &&
+        department != null &&
+        designation != null &&
+        salary != null) {
+
+        employees[index].name = name;
+        employees[index].email = email;
+        employees[index].department = department;
+        employees[index].designation = designation;
+        employees[index].salary = salary;
+
+        displayEmployees();
+
+        alert("Employee updated successfully!");
+    }
+}
+
+
 // Delete Employee
 function deleteEmployee(index) {
 
-    employees.splice(index, 1);
+    let result = confirm(
+        "Are you sure you want to delete this employee?"
+    );
 
-    displayEmployees();
+    if (result) {
+
+        employees.splice(index, 1);
+
+        displayEmployees();
+
+        alert("Employee deleted successfully!");
+    }
 }
 
 
@@ -116,10 +182,17 @@ function searchEmployee() {
                     <td>${employee.salary}</td>
 
                     <td>
+
+                        <button class="update-btn"
+                                onclick="updateEmployee(${index})">
+                            Update
+                        </button>
+
                         <button class="delete-btn"
                                 onclick="deleteEmployee(${index})">
                             Delete
                         </button>
+
                     </td>
 
                 </tr>
