@@ -214,3 +214,4 @@ function clearForm() {
     document.getElementById("designation").value = "";
     document.getElementById("salary").value = "";
 }
+console.log("Employee Management System");
